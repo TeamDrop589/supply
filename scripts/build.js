@@ -11,20 +11,17 @@ function toFixedStr(n) {
   return Number(n).toFixed(DECIMALS);
 }
 
-async function getIssued() {
-const client = new Client(WSS);
-  await client.connect();
-
-  let issued = 0;
-  let marker = null;
   do {
-    const resp = await client.request({
+    const req = {
       command: "account_lines",
       account: ISSUER,
       ledger_index: "validated",
-      limit: 400,
-      marker
-    });
+      limit: 400
+    };
+    if (marker) req.marker = marker; // only include marker when it’s a real string
+
+    const resp = await client.request(req);
+
     for (const line of resp.result.lines || []) {
       if ((line.currency || "").toUpperCase() !== CURRENCY.toUpperCase()) continue;
       const bal = Number(line.balance);
@@ -32,6 +29,7 @@ const client = new Client(WSS);
     }
     marker = resp.result.marker;
   } while (marker);
+
 
   await client.disconnect();
   return toFixedStr(issued);
