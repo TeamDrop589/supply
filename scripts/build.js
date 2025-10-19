@@ -1,4 +1,4 @@
-import xrpl from "xrpl";
+import { Client } from "xrpl";
 import { writeFileSync, mkdirSync, existsSync, readFileSync } from "fs";
 
 const ISSUER = "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh"; // DROP issuer
@@ -12,7 +12,7 @@ function toFixedStr(n) {
 }
 
 async function getIssued() {
-  const client = new xrpl.Client(WSS);
+const client = new Client(WSS);
   await client.connect();
 
   let issued = 0;
