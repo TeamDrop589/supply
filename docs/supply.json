@@ -2,11 +2,11 @@
   "symbol": "DROP",
   "decimals": 6,
   "total_supply": "1000000.000000",
-  "circulating_supply": "989903.518179",
-  "issued_supply": "989903.518179",
+  "circulating_supply": "989171.224510",
+  "issued_supply": "989171.224510",
   "excluded_accounts": [],
   "issuer": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh",
-  "updated_at": "2025-10-31T11:29:17.615Z",
+  "updated_at": "2025-10-31T11:41:30.233Z",
   "info": {
     "xrpscan": "https://xrpscan.com/account/rszenFJoDdiGjyezQc8pME9KWDQH43Tswh"
   }
