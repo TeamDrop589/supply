@@ -1,0 +1,11 @@
+{
+  "name": "drop-supply",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "xrpl": "^3.0.0"
+  },
+  "scripts": {
+    "build": "node scripts/build.js"
+  }
+}
