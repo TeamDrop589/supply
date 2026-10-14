@@ -1,8 +1,9 @@
 {
   "symbol": "DROP",
   "decimals": 6,
-  "total_supply": "1000000.000000",
+  "total_supply": "989057.295977",
   "circulating_supply": "989057.295977",
+  "max_supply": "1000000.000000",
   "issued_supply": "989057.295977",
   "excluded_accounts": [],
   "issuer": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh",

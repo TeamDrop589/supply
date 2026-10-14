@@ -2,9 +2,9 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const ENDPOINTS = [
-  ["total-supply.txt", "issued_supply"],
+  ["total-supply.txt", "total_supply"],
   ["circulating-supply.txt", "circulating_supply"],
-  ["max-supply.txt", "total_supply"]
+  ["max-supply.txt", "max_supply"]
 ];
 
 export function writeCmcEndpoints(payload, docsDir = "docs") {

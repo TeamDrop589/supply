@@ -6,7 +6,7 @@ import { writeCmcEndpoints } from "./cmc-endpoints.js";
 // ---- $DROP settings ----
 const ISSUER   = "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh"; // DROP issuer
 const DECIMALS = 6;
-const TOTAL_SUPPLY_STR = "1000000.000000";              // fixed cap
+const MAX_SUPPLY_STR = "1000000.000000";                // fixed cap
 const WSS = "wss://xrplcluster.com";
 
 // If, later, you want to exclude team/treasury/blackhole wallets from circulating:
@@ -113,8 +113,9 @@ async function main() {
   const payload = {
     symbol: "DROP",
     decimals: DECIMALS,
-    total_supply: TOTAL_SUPPLY_STR,
+    total_supply: issued,
     circulating_supply: circulating,
+    max_supply: MAX_SUPPLY_STR,
     issued_supply: issued,
     excluded_accounts: EXCLUDED,
     issuer: ISSUER,
