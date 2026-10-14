@@ -1,6 +1,7 @@
 // scripts/build.js
 import { Client } from "xrpl";
 import { writeFileSync, mkdirSync, existsSync, readFileSync } from "fs";
+import { writeCmcEndpoints } from "./cmc-endpoints.js";
 
 // ---- $DROP settings ----
 const ISSUER   = "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh"; // DROP issuer
@@ -123,7 +124,7 @@ async function main() {
     }
   };
 
-  // Write to docs/ so GitHub Pages serves it at /supply.json
+  // Write to docs/ so GitHub Pages serves the JSON feed and CMC's numeric endpoints.
   if (!existsSync("docs")) mkdirSync("docs");
   const outPath = "docs/supply.json";
 
@@ -142,6 +143,10 @@ async function main() {
   } else {
     console.log("No change in docs/supply.json");
   }
+
+  // CMC expects a plain decimal number in the response body, not a JSON object.
+  // Their total supply corresponds to issued/outstanding tokens; the fixed cap is max supply.
+  for (const path of writeCmcEndpoints(payload)) console.log(`Updated ${path}`);
 }
 
 main().catch((e) => {
