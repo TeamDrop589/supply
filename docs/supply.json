@@ -1,13 +1,13 @@
 {
   "symbol": "DROP",
   "decimals": 6,
-  "total_supply": "989055.609048",
-  "circulating_supply": "989055.609048",
+  "total_supply": "989055.606255",
+  "circulating_supply": "989055.606255",
   "max_supply": "1000000.000000",
-  "issued_supply": "989055.609048",
+  "issued_supply": "989055.606255",
   "excluded_accounts": [],
   "issuer": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh",
-  "updated_at": "2026-11-16T03:06:31.492Z",
+  "updated_at": "2026-11-16T11:04:22.619Z",
   "info": {
     "xrpscan": "https://xrpscan.com/account/rszenFJoDdiGjyezQc8pME9KWDQH43Tswh"
   }
