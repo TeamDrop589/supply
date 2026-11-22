@@ -6,6 +6,7 @@
     "xrpl": "^3.0.0"
   },
   "scripts": {
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "test:retry": "node --test scripts/retry.test.js"
   }
 }

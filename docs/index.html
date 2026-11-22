@@ -12,7 +12,10 @@
   </head>
   <body>
     <h1>$DROP Supply (Auto-Updated)</h1>
-    <p>JSON endpoint: <code>https://TeamDrop589.github.io/supply/supply.json</code></p>
+    <p>Public JSON feed: <code>https://xrp-drop.com/supply/supply.json</code></p>
+    <p>Total Supply API (CoinMarketCap and CoinGecko): <code>https://xrp-drop.com/supply/total-supply.txt</code></p>
+    <p>Self-Reported Circulating Supply API (CoinMarketCap and CoinGecko): <code>https://xrp-drop.com/supply/circulating-supply.txt</code></p>
+    <p>Fixed maximum supply: 1,000,000. Plain-number feed: <code>https://xrp-drop.com/supply/max-supply.txt</code></p>
     <p>Issuer (XRPL): 
       <a id="xrpscan" target="_blank" rel="noopener" href="https://xrpscan.com/account/rszenFJoDdiGjyezQc8pME9KWDQH43Tswh">
         https://xrpscan.com/account/rszenFJoDdiGjyezQc8pME9KWDQH43Tswh
@@ -22,7 +25,7 @@
       <pre id="json" style="white-space:pre-wrap">Loading...</pre>
     </div>
     <script>
-      const url = "https://TeamDrop589.github.io/supply/supply.json";
+      const url = "https://xrp-drop.com/supply/supply.json";
       fetch(url).then(r => r.json()).then(j => {
         document.getElementById("json").textContent = JSON.stringify(j, null, 2);
       }).catch(()=>document.getElementById("json").textContent="(supply.json not yet generated)");
