@@ -46,21 +46,21 @@ jobs:
           PUBLISH_TOKEN: ${{ secrets.DROP_SUPPLY_PUBLISH_TOKEN }}
         run: |
           if [[ -z "$PUBLISH_TOKEN" ]]; then
-            echo "Missing DROP_SUPPLY_PUBLISH_TOKEN Actions secret."
-            exit 1
+            echo "::warning::DROP_SUPPLY_PUBLISH_TOKEN is not configured; the website will serve its fallback feed snapshot."
+          else
+            jq -n \
+              --rawfile json docs/supply.json \
+              --rawfile total docs/total-supply.txt \
+              --rawfile circulating docs/circulating-supply.txt \
+              --rawfile max docs/max-supply.txt \
+              '{feeds:{"supply.json":$json,"total-supply.txt":$total,"circulating-supply.txt":$circulating,"max-supply.txt":$max}}' \
+            | curl --fail-with-body --silent --show-error --retry 3 --retry-all-errors --retry-delay 2 --max-time 30 \
+                -X POST \
+                -H "Authorization: Bearer ${PUBLISH_TOKEN}" \
+                -H "Content-Type: application/json" \
+                --data-binary @- \
+                https://xrp-drop.com/supply/publish
           fi
-          jq -n \
-            --rawfile json docs/supply.json \
-            --rawfile total docs/total-supply.txt \
-            --rawfile circulating docs/circulating-supply.txt \
-            --rawfile max docs/max-supply.txt \
-            '{feeds:{"supply.json":$json,"total-supply.txt":$total,"circulating-supply.txt":$circulating,"max-supply.txt":$max}}' \
-          | curl --fail-with-body --silent --show-error --retry 3 --retry-all-errors --retry-delay 2 --max-time 30 \
-              -X POST \
-              -H "Authorization: Bearer ${PUBLISH_TOKEN}" \
-              -H "Content-Type: application/json" \
-              --data-binary @- \
-              https://xrp-drop.com/supply/publish
 
       - name: Commit and push changes if any
         run: |
